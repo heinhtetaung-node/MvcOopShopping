@@ -1,0 +1,10 @@
+RewriteEngine On    
+RewriteBase /MvcOopShopping
+
+# localhost/MvcOopShopping/home <=> localhost/MvcOopShopping/index.php?action=home
+RewriteRule ^([a-zA-Z0-9-_]+)/?$ index.php?action=$1 
+
+# localhost/MvcOopShopping/products/insert <=> localhost/MvcOopShopping/index.php?action=products&method=insert
+RewriteRule ^([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/?$ index.php?action=$1&method=$2 
+
+RewriteRule ^([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)?$ index.php?action=$1&method=$2&method2=$3 

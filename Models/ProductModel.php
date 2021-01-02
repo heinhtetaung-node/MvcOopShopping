@@ -2,24 +2,15 @@
 
 namespace Models;
 
-class ProductModel {
+use Models\BaseModel;
+
+class ProductModel extends BaseModel {
 
     public function getProducts(){
-        echo 'select * from products from model<br>';
-        return [
-            [
-                'id' => 1,
-                'name' => 'P1'
-            ],
-            [
-                'id' => 2,
-                'name' => 'P2'
-            ],
-            [
-                'id' => 3,
-                'name' => 'P3'
-            ]
-        ];
+        $sql = "SELECT * FROM products";
+        $result = $this->mysqli->query($sql);
+        $products = $result->fetch_all(MYSQLI_ASSOC);
+        return $products;
     }
 
 }

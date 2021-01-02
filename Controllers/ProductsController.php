@@ -10,4 +10,8 @@ class ProductsController {
         echo 'products';
     }
 
+    public function insert() {
+    	echo 'insert';
+    }
+
 }
