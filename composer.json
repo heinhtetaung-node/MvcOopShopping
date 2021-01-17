@@ -4,5 +4,8 @@
       "Controllers\\":"Controllers/",
       "Models\\":"Models/"
     }
+  },
+  "require": {
+    "jenssegers/blade": "^1.4"
   }
 }

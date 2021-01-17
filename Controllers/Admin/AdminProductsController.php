@@ -4,7 +4,9 @@ namespace Controllers\Admin;
 
 use Models\ProductModel;
 
-class AdminProductsController {
+use Controllers\BaseController;
+
+class AdminProductsController extends BaseController {
 
 	private $productModel;
 
@@ -14,11 +16,25 @@ class AdminProductsController {
 
     public function index() {
     	$products = $this->productModel->getProducts();
-    	echo '<pre>'; var_dump($products); echo '</pre>';
+
+    	$this->renderBlade('admin.products', ['products' => $products]);
     }
 
     public function insert() {
-    	echo 'admin product insert';
+    	$data = $_POST;
+    	$result = $this->productModel->insert($data);
+    	if($result == true){
+    		header('location: '.$this->admin_baseurl.'products');
+    	}
+    	echo 'something error occoured'; exit;
+    }
+
+    public function create() {
+    	// $categories = get data from categoryModel
+
+    	// $sub_categories = get data from subcategoryModel
+    	
+    	$this->renderBlade('admin.product_create'  /* , ['categories' => $categories, 'sub_categories' => $sub_categories] */ );
     }
 
 }

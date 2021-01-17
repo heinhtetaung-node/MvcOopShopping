@@ -6,11 +6,13 @@ use Controllers\HomeController;
 use Controllers\ProductsController;
 use Controllers\Admin\AdminHomeController;
 use Controllers\Admin\AdminProductsController;
+use Controllers\Admin\AdminCategoryController;
 
 $homeController = new HomeController();
 $productsController = new ProductsController();
 $adminHomeController = new AdminHomeController();
 $adminProductsController = new AdminProductsController();
+$adminCategoryController = new AdminCategoryController();
 
 $action = isset( $_GET['action'] )? $_GET['action'] : '';
 $method = isset( $_GET['method'] )? $_GET['method'] : '';
@@ -60,10 +62,27 @@ switch ($action) {
 
     			$adminProductsController->index();
 
-    		}else{
+            }elseif($method2 == 'create'){
+
+                $adminProductsController->create();                
+
+    		}elseif($method2 == 'insert'){
+
+                $adminProductsController->insert();                
+
+            }else{
     			echo '404 not found';
     		}
-    	} #elseif ( $category ) // elseif ( $subcategory ) -> homework
+    	} elseif ($method == 'category') {
+
+            if($method2 == ''){
+
+                $adminCategoryController->index();
+
+            }
+
+        }
+
     	break;
 
     default:

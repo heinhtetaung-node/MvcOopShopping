@@ -4,7 +4,9 @@ namespace Controllers\Admin;
 
 use Models\ProductModel;
 
-class AdminHomeController {
+use Controllers\BaseController;
+
+class AdminHomeController extends BaseController {
     
     private $ProductModel;
 
